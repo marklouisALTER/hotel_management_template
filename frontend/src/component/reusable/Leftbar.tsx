@@ -9,10 +9,16 @@ import { IoMdSettings,IoMdNotifications } from 'react-icons/io'
 import { NavLink } from 'react-router-dom'
 export const Leftbar:React.FC = () => {
     const [active, setActive] = useState<boolean>(true);
+    // const [viewAccount, setViewAccount] = useState<boolean>(true);
 
     const toggleMenu = () =>{
       setActive(!active);
     }
+
+    // const toggleAccount = () => {
+    //     setViewAccount(!viewAccount);
+    // }
+
   return (
     <div className="z-[50]">
  
@@ -27,6 +33,7 @@ export const Leftbar:React.FC = () => {
     <button>
         <BiSolidUserCircle 
             className="text-3xl text-primary hover:text-secondary transition-all delay-50 ease-in-out"
+            // onClick={toggleAccount}
         />
     </button>
     <button className='text-black'>
@@ -88,6 +95,15 @@ export const Leftbar:React.FC = () => {
         </div>
     </div>
     
+{/* Toggle Account */}
+{/* Toggle Account */}
+{/* <div className={`${viewAccount ? 'border border-gray-300 p-3 shadow-lg shadow-spread w-[10rem] ml-auto h-auto ' : 'hidden'}`}>
+    <div className='flex flex-col gap-5 mt-3'>
+        <h1>Mark Louis A.</h1>
+        <h1>Sign Out</h1>
+    </div>
+</div> */}
+
 
     </div>
   )
