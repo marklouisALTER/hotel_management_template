@@ -8,7 +8,7 @@ import { BiSolidReport, BiSolidUserCircle } from 'react-icons/bi'
 import { IoMdSettings,IoMdNotifications } from 'react-icons/io'
 import { NavLink } from 'react-router-dom'
 export const Leftbar:React.FC = () => {
-    const [active, setActive] = useState<boolean>(true);
+    const [active, setActive] = useState<boolean>(false);
     // const [viewAccount, setViewAccount] = useState<boolean>(true);
 
     const toggleMenu = () =>{

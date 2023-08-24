@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaBed } from 'react-icons/fa'
 import { BsViewList } from 'react-icons/bs'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Legend } from 'chart.js'
 ChartJS.register(
   ArcElement,
   Legend
