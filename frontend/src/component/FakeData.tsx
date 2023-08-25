@@ -15,7 +15,7 @@ export default {
         "room3" : {
                 "id":3,
                 "room": 103,
-                "status": "open",
+                "status": "not ready",
                 "type": "eco"
         },
         "room4" : {
