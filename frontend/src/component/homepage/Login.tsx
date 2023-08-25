@@ -42,9 +42,9 @@ export const Login:React.FC = () => {
   };
   return (
     <div className='w-screen h-screen flex items-center justify-center z-[-2] inset-0 absolute overflow-hidden'>
-        <div className='grid-cols-1 lg:grid-cols-2 grid grid-cols-2 relative w-[70rem] h-[40rem] mx-auto'
+        <div className=' grid grid-cols-1 lg:grid-cols-2 relative w-[70rem] h-[40rem] mx-auto'
               style={{ maxWidth: '100%', maxHeight: '100%' }}>
-            <div className='hidden lg:block col-span-1'>
+            <div className='hidden border lg:block col-span-1'>
                 <div className='flex flex-col items-start'>
                   <h1 className='mr-auto font-primary flex items-center gap-2 text-4xl font-extrabold'>
                         <div className='w-[4rem] h-[4rem] bg-primary flex items-center justify-center rounded-full '>
@@ -57,7 +57,7 @@ export const Login:React.FC = () => {
                 </div>
             </div>
             {/* you can also mx-auto for smooth transition */}
-            <div className='mx-[2rem] z-[4] px-auto md:mx-[10rem] lg:mx-[3rem] bg-primary grid grid-rows-4 shadow-xl shadow-gray-400 rounded-md my-[6rem]'>
+            <div className='mx-[4rem] z-[4] px-auto md:mx-[10rem] lg:mx-[3rem] bg-primary grid grid-rows-4 shadow-xl shadow-gray-400 rounded-md my-[5rem]'>
                 <div className='row-span-1 flex items-center justify-center'>
                 <h1 className='font-primary text-white text-4xl font-bold'>LOGIN</h1>
                 </div>

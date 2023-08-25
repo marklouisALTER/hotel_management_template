@@ -10,28 +10,38 @@ interface RoomInfo {
   type: string;
 }
 
+interface FakeData {
+  [floor: string]: {
+    [room: string]: RoomInfo;
+  };
+}
+
 export const GuessInformation: React.FC = () => {
   const navigate = useNavigate();
-  const { roomId } = useParams<{ roomId: string }>(); // getting the id of the selected room
+  const { roomId } = useParams<{ roomId: string }>(); 
 
   const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
 
   useEffect(() => {
 
-    //geget yung id base don sa pinasa na data
-    const data = fakeData['floor1'];
-    const room = Object.values(data).find((room) => room.id === Number(roomId));
-
-    if (room) {
-      setRoomInfo(room);
-    } else {
-
-      navigate('/check-in');
-    }
-  }, [roomId, navigate]);
+        let room: RoomInfo | undefined = undefined;
+        for (const floorKey in fakeData) {
+        const data = fakeData[floorKey] as FakeData[string];
+          room = Object.values(data).find((room) => room.id === Number(roomId));
+          if (room) {
+            break;
+          }
+        }
+      
+        if (room) {
+          setRoomInfo(room);
+        } else {
+          navigate('/check-in');
+        }
+      }, [roomId, navigate]);
 
   if (!roomInfo) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   return (
