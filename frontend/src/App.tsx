@@ -12,7 +12,7 @@ function App() {
   return (
     <>
     <Router>
-    {/* <Leftbar /> */}
+    <Leftbar />
     {/* {auth.isAuthenticated() && <Leftbar />} */}
       <Routes>
       <Route path="/login" element={<Login />}/>

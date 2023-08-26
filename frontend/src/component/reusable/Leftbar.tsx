@@ -24,7 +24,7 @@ export const Leftbar:React.FC = () => {
  
 
 
-    <div className='h-14 max-w-auto flex justify-end px-5 shadow shadow-gray-300 gap-3 backdrop-blur-sm'>
+    <div className='h-14 max-w-auto flex justify-end px-5 shadow-md shadow-spread shadow-gray-400 gap-3 backdrop-blur-sm'>
     <button>
         <IoMdNotifications 
             className="text-3xl text-primary hover:text-secondary transition-all delay-50 ease-in-out"

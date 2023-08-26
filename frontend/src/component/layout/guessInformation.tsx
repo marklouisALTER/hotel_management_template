@@ -198,9 +198,11 @@ export const GuessInformation: React.FC = () => {
             <div className='flex flex-row items-center mt-2 gap-5 justify-between px-5'>
                 <label className='font-primary w-[50%]'>Room Type / No.</label>
                     <div className='flex gap-1 justify-end'>
-                        <input 
+                    <input
                             type='text'
-                            className='border w-[61%] border-primary rounded-sm' value={roomInfo.type}/>
+                            className='border w-[60%] border-primary rounded-sm'
+                            value={roomInfo.type}
+                            />
                         <input 
                             type='text'
                             className='border w-[20%] border-primary rounded-sm' value={roomInfo.room}/>
