@@ -85,10 +85,10 @@ export const Checkin: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className='col-span-1 grid grid-rows-3 shadow-2xl shadow-spread shadow-black-900 rounded-xl p-2'>
-            <div className='px-5 border-b-2 border-gray-300'>
-              <h2 className='font-bold font-primary text-xl py-2'>Overview</h2>
-              <div className='flex items-center gap-5'>
+      <div className='col-span-1 grid grid-rows-3 shadow-2xl shadow-spread shadow-black-900 rounded-xl'>
+            <div className='border-b-2 border-gray-300'>
+            <h2 className='font-bold font-primary text-xl py-2 px-3 text-white w-full bg-primary'>Overview</h2>
+              <div className='flex items-center gap-5 px-5'>
                     <div className='w-[8rem] h-auto'>
                             <Doughnut
                                 data ={dataDoughnut}
@@ -101,21 +101,77 @@ export const Checkin: React.FC = () => {
                         <div className='flex items-center gap-3'><FaBed className="text-primary"/>
                               <h1 className='text-primary font-bold font-primary'>Unoccupied</h1>
                         </div>
-                       
                     </div>
               </div>
-              <div className='flex justify-end items-center gap-2'>
+              <div className='flex justify-end items-center gap-2 pr-4'>
                   <h1 className='font-bold text-primary'>Total Customer :</h1>
                   {/* Change this into jsx if you want to render this and use .map */}
                   <div className='text-md font-primary font-bold'>20</div>
                   <VscPerson className='text-xl bg-primary text-white rounded-md'/>
               </div>
             </div>
-            <div className=''>
-
-            </div>
-            <div className='border border-blue-300'>
-
+            <div className='row-span-2'>
+                <h2 className='font-bold font-primary text-xl py-2 px-3 text-white w-full bg-primary'>Filter</h2>
+                <div className='flex items-center px-5 pt-5 gap-2'>
+                    <div className='flex gap-5 items-center pl-3 pt-2'>
+                        <input type="checkbox" className="w-[1.5rem] border border-primary h-[1.5rem] "/>
+                              <label className='text-primary text-xl'>Available</label>
+                    </div>
+                    <div className='flex gap-5 items-center pl-3 pt-2'>
+                        <input type="checkbox" className="w-[1.5rem] border border-primary h-[1.5rem] "/>
+                              <label className='text-primary text-xl'>Occupied</label>
+                    </div>
+                </div>
+                <div className=' grid grid-cols-2 pt-5 px-5'>
+                      <div className='flex flex-col pl-1'>
+                  <div className='flex gap-2 items-center pt-5'>
+                    <input type="checkbox" className="w-[1.2rem] border border-primary h-[1.2rem]"/>
+                          <label className='text-primary text-md'>Standard Room</label>
+                  </div>
+                    <div className='pl-[1.4rem] text-xs'>
+                        <ul>
+                            <li className='list-disc'>Room size: 22 - 33 sq. m</li>
+                            <li className='list-disc'>Occupancy: 1 - 2 Adults</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className='flex flex-col pl-1'>
+                  <div className='flex gap-2 items-center pt-5'>
+                    <input type="checkbox" className="w-[1.2rem] border border-primary h-[1.2rem]"/>
+                          <label className='text-primary text-md'>Superior Room</label>
+                  </div>
+                    <div className='pl-[1.4rem] text-xs'>
+                        <ul>
+                            <li className='list-disc'>Room size: 28 - 37 sq. m</li>
+                            <li className='list-disc'>Occupancy: 1 - 2 Adults</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className='flex flex-col pl-1'>
+                  <div className='flex gap-2 items-center pt-5'>
+                    <input type="checkbox" className="w-[1.2rem] border border-primary h-[1.2rem]"/>
+                          <label className='text-primary text-md'>Deluxe Room</label>
+                  </div>
+                    <div className='pl-[1.4rem] text-xs'>
+                        <ul>
+                            <li className='list-disc'>Room size: 33 - 42 sq. m</li>
+                            <li className='list-disc'>Occupancy: 1 - 3 Adults</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className='flex flex-col pl-1'>
+                  <div className='flex gap-2 items-center pt-5'>
+                    <input type="checkbox" className="w-[1.2rem] border border-primary h-[1.2rem]"/>
+                          <label className='text-primary text-md'>Family Suite</label>
+                  </div>
+                    <div className='pl-[1.4rem] text-xs'>
+                        <ul>
+                            <li className='list-disc'>Room size: 65 - 84 sq. m</li>
+                            <li className='list-disc'>Occupancy: 2 - 4 Adults</li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
             </div>
       </div>
     </div>
