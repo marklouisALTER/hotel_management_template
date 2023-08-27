@@ -5,6 +5,8 @@ import { Login } from './component/homepage/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useAuth } from './component/Auth/Auth'
 import { GuessInformation } from './component/layout/guessInformation'
+import Billing from './component/layout/billing'
+
 import './App.css'
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/check-in" element={<Checkin />}/>
         <Route path="/guess-information/:roomId" element={<GuessInformation />} />
+        <Route path="/billing" element={<Billing/>}/>
       </Routes>
     </Router>
     </>

@@ -18,6 +18,8 @@ interface Room {
   room: number;
   status: string;
   type: string;
+  capacity: number;
+  price: number; //1000, 3000, 5000
 }
 
 interface FakeData {
