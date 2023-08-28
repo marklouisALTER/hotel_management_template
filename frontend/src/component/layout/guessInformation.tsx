@@ -48,7 +48,7 @@ export const GuessInformation: React.FC = () => {
     // Room details
     const [durationValue, setDurationValue] = useState('0'); // Initialize as a string
     const [checkedCheckboxes, setCheckedCheckboxes] = useState<boolean[]>(Array(checkboxData.length).fill(false));
-
+    const [selectedDate, setSelectedDate] = useState(''); // State to store selected date
     useEffect(() => {
         let room: RoomInfo | undefined = undefined;
         for (const floorKey in fakeData) {
@@ -72,7 +72,7 @@ export const GuessInformation: React.FC = () => {
     
     
     const calculateTotalPrice = (): number => {
-        const roomPrice = roomInfo.price; // Assuming you have the room price
+        const roomPrice = roomInfo.price; 
         const duration = parseInt(durationValue); // Parse the duration value
         const extraServicesTotal = calculateTotalCheckedPrice();
         const totalPrice = (roomPrice + extraServicesTotal) * duration;
@@ -98,9 +98,49 @@ export const GuessInformation: React.FC = () => {
     };
 
     const handleConfirm = () => {
-        navigate('/billing', { state: { total: calculateTotalPrice() } });
+        navigate('/billing', { state: { 
+            total: calculateTotalPrice(), 
+            numGuest: 2,
+            roomCap: roomInfo.capacity,
+            roomType: roomInfo.type,
+            roomNo: roomInfo.room,
+            inDate: selectedDate,
+            outDate: calculateCheckoutDate(),
+            priceDay: roomInfo.price,            
+            extraTotal: calculateTotalCheckedPrice(),
+
+
+
+        } });
 
     };
+
+    // Calculate the checkout date based on selected duration and starting date
+    const calculateCheckoutDate = () => {
+        if (!selectedDate) {
+            return '';
+        }
+    
+        const duration = parseInt(durationValue, 10); // Parse duration to integer
+    
+        // Convert selectedDate string to a Date object
+        const parsedDate = new Date(selectedDate);
+    
+        // Calculate checkout date
+        const checkoutDate = new Date(parsedDate.getTime() + duration * 24 * 60 * 60 * 1000);
+    
+        // Format the checkout date as "Mon, Aug 21, 2023"
+        const formattedCheckoutDate = checkoutDate.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    
+        return formattedCheckoutDate;
+    };
+
+    
     return (
 
         <div className='w-full md:flex md:justify-center md:items-center bg-blue-300 md:p-16 inset-0 z-4 p-6 md:h-full'>
@@ -117,7 +157,7 @@ export const GuessInformation: React.FC = () => {
                     <div className='col-span-1'>
                         <div className='flex flex-col 2xl:items-center p-3'>
                             <div className='p-5 flex flex-col 2xl:flex-row gap-8 md:gap-4 w-full'>
-                                <CustomDatePicker/>
+                                <CustomDatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
                                 <div className='flex flex-col'>
                                     <label className='font-primary text-left w-full font-bold'>Duration </label>
                                     <select
@@ -132,14 +172,14 @@ export const GuessInformation: React.FC = () => {
                                 </div>
                                 <div className='flex flex-col'>
                                     <label className='font-primary text-left w-full font-bold'>Check Out</label>        
-                                    <input 
+                                    <input
                                         type='text'
                                         className='border w-full md:w-auto p-1 border-gray-300 rounded-md placeholder-gray-400 outline-none'
+                                        value={calculateCheckoutDate()} // Display formatted checkout date
                                         readOnly
                                     />
                                         
-                                </div>
-                                
+                                </div>                                
                             </div>
                             <div className='gap-4 w-full'>                    
                                 <h1 className='font-primary font-extrabold text-lg '>Room Details</h1>

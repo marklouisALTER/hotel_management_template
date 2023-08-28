@@ -1,37 +1,32 @@
 import React, { useState, useEffect } from 'react';
+interface CustomDatePickerProps {
+  selectedDate: string;
+  setSelectedDate: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const CustomDatePicker = () => {
+const CustomDatePicker: React.FC<CustomDatePickerProps> = ({ selectedDate, setSelectedDate }) => {
 
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
-  const [selectedDate, setSelectedDate] = useState('');
+  
 
-  useEffect(() => {
-    const currentDate = new Date();
-
-    const formattedDate = new Intl.DateTimeFormat('en-US', {
+  const formatDate = (date: Date): string => {
+    return new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
       year: 'numeric'
-    }).format(currentDate);
-
-    setSelectedDate(formattedDate);
-  }, []);
+    }).format(date);
+  };
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedValue = event.target.value;
-  
+
     // Parse the selected date value
     const parsedDate = new Date(selectedValue);
-  
+
     // Format the date to "Mon, Aug 28, 2023" format
-    const formattedDate = new Intl.DateTimeFormat('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
-    }).format(parsedDate);
-  
+    const formattedDate = formatDate(parsedDate);
+
     setSelectedDate(formattedDate);
     setIsDatePickerVisible(false);
   };
