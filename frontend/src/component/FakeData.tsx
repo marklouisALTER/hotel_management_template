@@ -4,7 +4,7 @@ export default {
                 "id": 1,
                 "room": 101,
                 "status": "open",
-                "type": "eco",
+                "type": "Standard Room",
                 "capacity": 2,
                 "price": 1000
             },
@@ -12,7 +12,7 @@ export default {
                 "id": 2,
                 "room": 102,
                 "status": "occupied",
-                "type": "eco",
+                "type": "Standard Room",
                 "capacity": 2,
                 "price": 1000
             },
@@ -20,7 +20,7 @@ export default {
                 "id": 3,
                 "room": 103,
                 "status": "not ready",
-                "type": "eco",
+                "type": "Standard Room",
                 "capacity": 2,
                 "price": 1000
             },
@@ -31,7 +31,7 @@ export default {
                 "id": 7,
                 "room": 107,
                 "status": "open",
-                "type": "Standard",
+                "type": "Deluxe Room",
                 "capacity": 2,
                 "price": 3000
             },
@@ -39,7 +39,7 @@ export default {
                 "id": 8,
                 "room": 108,
                 "status": "open",
-                "type": "Royale",
+                "type": "Executive Room",
                 "capacity": 4,
                 "price": 5000
             },
@@ -47,7 +47,7 @@ export default {
                 "id": 9,
                 "room": 109,
                 "status": "open",
-                "type": "Deluxe",
+                "type": "Economy Room",
                 "capacity": 3,
                 "price": 3500
             },

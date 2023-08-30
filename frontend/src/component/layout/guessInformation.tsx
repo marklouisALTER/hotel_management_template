@@ -69,25 +69,47 @@ export const GuessInformation: React.FC = () => {
         return <div>Loading...</div>;
     }
     
+    const checkedExtras: { name: string; price: number }[] = [];
     
+    const handleConfirm = () => {
+        const extraServicesTotal = calculateTotalExtrasPrice(); // Calculate once
+        const totalPrice = calculateTotalPrice(extraServicesTotal); // Pass the extraServicesTotal as an argument
     
-    const calculateTotalPrice = (): number => {
-        const roomPrice = roomInfo.price; 
-        const duration = parseInt(durationValue); // Parse the duration value
-        const extraServicesTotal = calculateTotalCheckedPrice();
-        const totalPrice = (roomPrice + extraServicesTotal) * duration;
-
-        return totalPrice;
+        navigate('/billing', {
+            state: {
+                total: totalPrice,
+                numGuest: 2,
+                roomCap: roomInfo.capacity,
+                roomType: roomInfo.type,
+                roomNo: roomInfo.room,
+                inDate: selectedDate,
+                outDate: calculateCheckoutDate(),
+                priceDay: roomInfo.price,
+                extras: checkedExtras,
+                extraTotal: extraServicesTotal, // Use the calculated value directly
+            },
+        });
     };
     
-    const calculateTotalCheckedPrice = (): number => {
+    const calculateTotalExtrasPrice = (): number => {
         let total = 0;
-        for (let i = 0; i < checkedCheckboxes.length; i++) {
+            
+        for (let i = 0; i < checkedCheckboxes.length - 1; i++) {
             if (checkedCheckboxes[i]) {
                 total += checkboxData[i].price;
+                checkedExtras.push({ name: checkboxData[i].label, price: checkboxData[i].price });
             }
         }
+
         return total;
+    };
+    
+    const calculateTotalPrice = (extraServicesTotal: number): number => {
+        const roomPrice = roomInfo.price;
+        const duration = parseInt(durationValue);
+        const totalPrice = (roomPrice + extraServicesTotal) * duration;
+    
+        return totalPrice;
     };
     
 
@@ -97,23 +119,6 @@ export const GuessInformation: React.FC = () => {
         setCheckedCheckboxes(updatedCheckedCheckboxes);
     };
 
-    const handleConfirm = () => {
-        navigate('/billing', { state: { 
-            total: calculateTotalPrice(), 
-            numGuest: 2,
-            roomCap: roomInfo.capacity,
-            roomType: roomInfo.type,
-            roomNo: roomInfo.room,
-            inDate: selectedDate,
-            outDate: calculateCheckoutDate(),
-            priceDay: roomInfo.price,            
-            extraTotal: calculateTotalCheckedPrice(),
-
-
-
-        } });
-
-    };
 
     // Calculate the checkout date based on selected duration and starting date
     const calculateCheckoutDate = () => {
@@ -321,7 +326,7 @@ export const GuessInformation: React.FC = () => {
                             <div className='gap-4 w-full p-3'>
                                 <h1 className='font-primary font-extrabold mt-2 text-lg'>Extras</h1>
                                 
-                                <div className='grid grid-cols-1 md:grid-cols-2 px-5 mt-4 gap-4 border-4'>
+                                <div className='grid grid-cols-1 2xl:grid-cols-2 px-5 mt-4 gap-4 border-4'>
                                     {checkboxData.map((item, index) => (
                                         <CheckboxWithPrice
                                             key={item.label}
